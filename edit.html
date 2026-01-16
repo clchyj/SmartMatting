@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑器 - 智能抠图</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/editor.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="container">
+            <div class="logo">
+                <span class="icon">✨</span>
+                <h1>智能抠图编辑器</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">返回首页</a>
+                <button class="btn btn-primary" id="save-btn">保存图片</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="editor-container">
+        <div class="toolbar">
+            <div class="tool-group">
+                <h3>背景设置</h3>
+                <div class="bg-options">
+                    <button class="bg-btn transparent active" data-type="transparent" title="透明背景"></button>
+                    <button class="bg-btn color" data-type="color" data-value="#ffffff" style="background: #fff" title="白色"></button>
+                    <button class="bg-btn color" data-type="color" data-value="#000000" style="background: #000" title="黑色"></button>
+                    <button class="bg-btn color" data-type="color" data-value="#ff0000" style="background: #ff0000" title="红色"></button>
+                    <button class="bg-btn custom" id="custom-bg-btn" title="自定义图片">+</button>
+                    <input type="file" id="bg-file-input" hidden accept="image/*">
+                    <input type="color" id="bg-color-picker" class="color-picker" title="选择颜色">
+                </div>
+            </div>
+
+            <div class="tool-group">
+                <h3>修补工具</h3>
+                <div class="tool-options">
+                    <button class="tool-btn active" data-tool="erase">
+                        <span>🧽</span> 擦除
+                    </button>
+                    <button class="tool-btn" data-tool="restore">
+                        <span>🖌️</span> 恢复
+                    </button>
+                </div>
+                <div class="history-controls" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <button class="tool-btn" id="undo-btn" title="撤销" disabled>
+                        <span>↩️</span> 撤销
+                    </button>
+                    <button class="tool-btn" id="redo-btn" title="重做" disabled>
+                        <span>↪️</span> 重做
+                    </button>
+                </div>
+                <div class="slider-control">
+                    <label>画笔大小: <span id="brush-size-val">20</span>px</label>
+                    <input type="range" id="brush-size" min="5" max="100" value="20">
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <div class="canvas-wrapper">
+                <canvas id="editor-canvas"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/editor.js"></script>
+</body>
+</html>

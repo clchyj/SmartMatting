@@ -1,0 +1,177 @@
+/* Editor Specific Styles */
+.editor-container {
+    display: flex;
+    height: calc(100vh - 64px);
+    padding: 0;
+    overflow: hidden;
+}
+
+.toolbar {
+    width: 280px;
+    background: white;
+    border-right: 1px solid var(--border-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.tool-group h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* Background Options */
+.bg-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.bg-btn {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+
+.bg-btn:hover, .bg-btn.active {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.bg-btn.transparent {
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), 
+                      linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #ccc 75%), 
+                      linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 10px 10px;
+    background-color: white;
+}
+
+.bg-btn.custom {
+    background: #F3F4F6;
+    color: var(--text-light);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-picker {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    grid-column: span 4;
+    cursor: pointer;
+}
+
+/* Tool Options */
+.tool-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tool-btn {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.tool-btn:hover {
+    background: #F9FAFB;
+}
+
+.tool-btn.active {
+    background: #EEF2FF;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.slider-control {
+    margin-top: 10px;
+}
+
+.slider-control label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.slider-control input[type="range"] {
+    width: 100%;
+    accent-color: var(--primary-color);
+}
+
+/* Canvas Area */
+.canvas-area {
+    flex: 1;
+    background-color: #F3F4F6;
+    background-image: radial-gradient(#E5E7EB 1px, transparent 1px);
+    background-size: 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    overflow: auto;
+}
+
+.canvas-wrapper {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), 
+                      linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #ccc 75%), 
+                      linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 20px 20px;
+    background-color: white;
+}
+
+canvas {
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .editor-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .toolbar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 10px;
+    }
+
+    .tool-group {
+        min-width: 200px;
+    }
+}

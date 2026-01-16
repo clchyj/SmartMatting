@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能抠图 - AI自动背景移除</title>
+    <meta name="description" content="免费在线AI智能抠图工具，一键去除图片背景">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <!-- 引入 MediaPipe Selfie Segmentation -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation@0.1/selfie_segmentation.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="container">
+            <div class="logo">
+                <span class="icon">✨</span>
+                <h1>智能抠图</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">首页</a>
+                <a href="edit.html">编辑器</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- 英雄区域 / 上传区域 -->
+        <section id="upload-section" class="hero-card">
+            <div class="hero-text">
+                <h2>AI智能一键抠图</h2>
+                <p>上传图片，3秒自动去除背景，免费、高清、无水印</p>
+            </div>
+            
+            <div class="upload-area" id="drop-zone">
+                <div class="upload-content">
+                    <div class="upload-icon">📁</div>
+                    <h3>点击或拖拽图片到这里</h3>
+                    <p class="sub-text">支持 JPG, PNG 格式，最大 10MB</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">选择图片</button>
+                    <input type="file" id="file-input" accept="image/jpeg, image/png" hidden>
+                </div>
+            </div>
+        </section>
+
+        <!-- 处理中状态 -->
+        <section id="processing-section" class="processing-card hidden">
+            <div class="processing-content">
+                <div class="spinner"></div>
+                <h3>正在智能分析图片...</h3>
+                <p>AI正在识别主体并移除背景</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结果展示区域 -->
+        <section id="result-section" class="result-card hidden">
+            <div class="result-header">
+                <h3>处理结果</h3>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="reupload-btn">重新上传</button>
+                    <a href="edit.html" class="btn btn-secondary" id="edit-btn">去编辑</a>
+                    <button class="btn btn-primary" id="download-btn">下载图片</button>
+                </div>
+            </div>
+            
+            <div class="image-comparison">
+                <div class="img-container original">
+                    <span class="label">原图</span>
+                    <img id="original-image" src="" alt="原图">
+                </div>
+                <div class="img-container result">
+                    <span class="label">抠图结果</span>
+                    <img id="result-image" src="" alt="抠图结果">
+                    <!-- 透明背景网格 -->
+                    <div class="checkerboard-bg"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 智能抠图. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/image-processor.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
